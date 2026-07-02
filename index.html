@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ATM Banking System</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Login Screen -->
+        <div id="loginScreen" class="screen">
+            <div class="atm-card">
+                <h1>ATM Banking System</h1>
+                <div class="login-form">
+                    <div class="input-group">
+                        <label for="accountName">Account Holder Name</label>
+                        <input type="text" id="accountName" placeholder="Enter your name" autocomplete="off">
+                    </div>
+                    <div class="input-group">
+                        <label for="pin">PIN (Default: 1234)</label>
+                        <input type="password" id="pin" placeholder="Enter 4-digit PIN" maxlength="4">
+                    </div>
+                    <button id="loginBtn" class="btn btn-primary">Login</button>
+                    <p id="loginError" class="error-message"></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main ATM Screen -->
+        <div id="mainScreen" class="screen hidden">
+            <div class="atm-card">
+                <div class="header">
+                    <h1>ATM Banking System</h1>
+                    <div class="user-info">
+                        <span id="userName">Welcome, User</span>
+                        <button id="logoutBtn" class="btn btn-small">Logout</button>
+                    </div>
+                </div>
+
+                <!-- Balance Display -->
+                <div class="balance-section">
+                    <h2>Current Balance</h2>
+                    <div class="balance-amount" id="balanceDisplay">₹10,000</div>
+                </div>
+
+                <!-- Transaction Tabs -->
+                <div class="tabs">
+                    <button class="tab-btn active" data-tab="deposit">Deposit</button>
+                    <button class="tab-btn" data-tab="withdraw">Withdraw</button>
+                    <button class="tab-btn" data-tab="balance">Balance</button>
+                    <button class="tab-btn" data-tab="history">History</button>
+                </div>
+
+                <!-- Deposit Section -->
+                <div id="depositSection" class="tab-content active">
+                    <h3>Deposit Money</h3>
+                    <div class="input-group">
+                        <label for="depositAmount">Amount (₹)</label>
+                        <input type="number" id="depositAmount" placeholder="Enter amount" min="1">
+                    </div>
+                    <button id="depositBtn" class="btn btn-success">Deposit</button>
+                </div>
+
+                <!-- Withdraw Section -->
+                <div id="withdrawSection" class="tab-content">
+                    <h3>Withdraw Money</h3>
+                    <div class="input-group">
+                        <label for="withdrawAmount">Amount (₹)</label>
+                        <input type="number" id="withdrawAmount" placeholder="Enter amount" min="1">
+                    </div>
+                    <button id="withdrawBtn" class="btn btn-warning">Withdraw</button>
+                </div>
+
+                <!-- Balance Section -->
+                <div id="balanceSection" class="tab-content">
+                    <h3>Balance Enquiry</h3>
+                    <div class="balance-info">
+                        <p>Available Balance</p>
+                        <div class="balance-amount" id="checkBalanceDisplay">₹10,000</div>
+                        <p class="last-updated">Last Updated: <span id="lastUpdated">Just now</span></p>
+                    </div>
+                    <button id="refreshBalanceBtn" class="btn btn-primary">Refresh Balance</button>
+                </div>
+
+                <!-- History Section -->
+                <div id="historySection" class="tab-content">
+                    <h3>Transaction History</h3>
+                    <div id="transactionHistory" class="transaction-list">
+                        <p class="no-transactions">No transactions yet</p>
+                    </div>
+                    <button id="downloadReceiptBtn" class="btn btn-info">Download Receipt</button>
+                    <button id="clearHistoryBtn" class="btn btn-danger">Clear History</button>
+                </div>
+
+                <!-- Transaction Status -->
+                <div id="transactionStatus" class="transaction-status hidden">
+                    <p id="statusMessage"></p>
+                </div>
+
+                <!-- Reset Account -->
+                <div class="reset-section">
+                    <button id="resetBtn" class="btn btn-danger btn-small">Reset Account</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Loading Overlay -->
+        <div id="loadingOverlay" class="loading-overlay hidden">
+            <div class="spinner"></div>
+            <p>Processing...</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
